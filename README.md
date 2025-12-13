@@ -157,3 +157,39 @@ A full-stack web platform connecting students and alumni of JNEC, MGM University
    ```bash
    npm run build
    ```
+## 📸 Screenshots
+
+### Landing Page
+![Landing Page](https://github.com/SarveshHarne28/Student-Alumni-Network/blob/main/screenshots/Landing%20Page.png)
+
+### Student Registration 
+![Student Registration](https://github.com/SarveshHarne28/Student-Alumni-Network/blob/main/screenshots/Student%20Registration.png)
+
+### Alumni Registration 
+![Alumni Registration](https://github.com/SarveshHarne28/Student-Alumni-Network/blob/main/screenshots/Alumni%20Registration.png)
+
+### Student Login
+![Student Login](https://github.com/SarveshHarne28/Student-Alumni-Network/blob/main/screenshots/Student%20Login.png)
+
+### Alumni Login
+![Alumni Login](https://github.com/SarveshHarne28/Student-Alumni-Network/blob/main/screenshots/Student%20Login.png)
+
+### Student Dashboard
+![Student Dashboard](https://github.com/SarveshHarne28/Student-Alumni-Network/blob/main/screenshots/Student%20Dashboard.png)
+
+### Alumni Dashboard
+![Alumni Dashboard](https://github.com/SarveshHarne28/Student-Alumni-Network/blob/main/screenshots/Alumni%20Dashboard.png)
+
+### Admin Dashboard
+![Admin Dashboard](https://github.com/SarveshHarne28/Student-Alumni-Network/blob/main/screenshots/Admin%20Dashboard.png)
+
+### Opportunity Creation by Alumni
+![Opportunity Creation by Alumni](https://github.com/SarveshHarne28/Student-Alumni-Network/blob/main/screenshots/Opportunity%20Creation%20by%20Alumni.png)
+
+### Networking
+![Networking](https://github.com/SarveshHarne28/Student-Alumni-Network/blob/main/screenshots/Networking.png)
+
+### Email Notification
+![Email Notification](https://github.com/SarveshHarne28/Student-Alumni-Network/blob/main/screenshots/Email%20Notification.png)
+
+Rest of the screenshots are in this folder- https://github.com/SarveshHarne28/Student-Alumni-Network/tree/main/screenshots
