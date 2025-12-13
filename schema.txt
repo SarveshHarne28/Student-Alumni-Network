@@ -171,19 +171,6 @@ CREATE TABLE messages (
     FOREIGN KEY (receiver_id) REFERENCES users(user_id)
 );
 
--- Notifications table
-CREATE TABLE notifications (
-    notification_id INT AUTO_INCREMENT PRIMARY KEY,
-    user_id INT NOT NULL,
-    type ENUM('message', 'connection_request', 'application_update', 'new_opportunity', 'new_application', 'connection_accepted', 'general'),
-    title VARCHAR(255) NOT NULL,
-    message TEXT NOT NULL,
-    related_id INT,
-    is_read TINYINT(1) DEFAULT 0,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (user_id) REFERENCES users(user_id)
-);
-
 -- Resources table
 CREATE TABLE resources (
     resource_id INT AUTO_INCREMENT PRIMARY KEY,
