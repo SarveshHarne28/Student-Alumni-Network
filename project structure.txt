@@ -1,0 +1,101 @@
+backend/
+├── config/
+│   └── db.js
+├── node_modules/
+├── src/
+│   ├── controllers/
+│   │   ├── admin.controller.js
+│   │   ├── application.controller.js
+│   │   ├── applications.controller.js
+│   │   ├── auth.controller.js
+│   │   ├── connection.controller.js
+│   │   ├── message.controller.js
+│   │   ├── opportunity.controller.js
+│   │   ├── profile.controller.js
+│   │   └── user.controller.js
+│   ├── middleware/
+│   │   └── auth.middleware.js
+│   ├── routes/
+│   │   ├── admin.routes.js
+│   │   ├── application.routes.js
+│   │   ├── applications.routes.js
+│   │   ├── auth.routes.js
+│   │   ├── connection.routes.js
+│   │   ├── message.routes.js
+│   │   ├── opportunity.routes.js
+│   │   ├── profile.routes.js
+│   │   └── user.routes.js
+│   └── utils/
+├── env/
+├── .env.example
+├── .gitignore
+├── app.js
+├── createAdmin.js
+├── package-lock.json
+├── package.json
+├── README.md
+├── server.js
+├── testEmail.js
+└── update_schema.js
+
+
+frontend/
+├── node_modules/
+├── public/
+│   └── vite.svg
+├── src/
+│   ├── assets/
+│   │   └── react.svg
+│   ├── components/
+│   │   ├── Connections/
+│   │   │   ├── ConnectionList.jsx
+│   │   │   └── SendRequest.jsx
+│   │   ├── Messages/
+│   │   │   ├── ChatBox.jsx
+│   │   │   └── AcceptedStudentsList.jsx
+│   │   ├── AdminPanel.jsx
+│   │   ├── AlumniLogin.jsx
+│   │   ├── AlumniProfile.jsx
+│   │   ├── AlumniRegister.jsx
+│   │   ├── ApplyOpportunity.jsx
+│   │   ├── CreateOpportunity.jsx
+│   │   ├── EditAlumniProfile.jsx
+│   │   ├── EditOpportunity.jsx
+│   │   ├── EditStudentProfile.jsx
+│   │   ├── Index.jsx
+│   │   ├── MessageNotification.jsx
+│   │   ├── MyApplications.jsx
+│   │   ├── MyOpportunities.jsx
+│   │   ├── Navigation.jsx
+│   │   ├── OpportunitiesList.jsx
+│   │   ├── Profile.jsx
+│   │   ├── StudentDashboard.jsx
+│   │   ├── StudentLogin.jsx
+│   │   ├── StudentProfileView.jsx
+│   │   ├── StudentRegister.jsx
+│   │   ├── UserProfileView.jsx
+│   │   ├── UserSearch.jsx
+│   │   └── ViewApplicants.jsx
+│   ├── pages/
+│   │   ├── ApplyOpportunity.jsx
+│   │   ├── CreateOpportunity.jsx
+│   │   ├── EditOpportunity.jsx
+│   │   ├── Index.jsx
+│   │   ├── Messages.jsx
+│   │   ├── MyOpportunities.jsx
+│   │   ├── OpportunitiesList.jsx
+│   │   ├── Profile.jsx
+│   │   ├── Profiles.jsx
+│   │   ├── StudentLogin.jsx
+│   │   └── StudentRegister.jsx
+│   ├── App.css
+│   ├── App.jsx
+│   ├── index.css
+│   └── main.jsx
+├── .gitignore
+├── eslint.config.js
+├── index.html
+├── package-lock.json
+├── package.json
+├── README.md
+└── vite.config.js

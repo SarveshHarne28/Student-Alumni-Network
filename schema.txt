@@ -1,0 +1,197 @@
+CREATE DATABASE IF NOT EXISTS alumni_network;
+USE alumni_network;
+
+-- Users table
+CREATE TABLE users (
+    user_id INT AUTO_INCREMENT PRIMARY KEY,
+    email VARCHAR(255) NOT NULL UNIQUE,
+    password_hash VARCHAR(255) NOT NULL,
+    role VARCHAR(20) NOT NULL,
+    verified TINYINT(1) DEFAULT 0,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Companies table
+CREATE TABLE companies (
+    company_id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255) NOT NULL
+);
+
+-- Alumni profiles table
+CREATE TABLE alumni_profiles (
+    user_id INT PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    phone VARCHAR(20),
+    company_id INT,
+    position VARCHAR(100),
+    graduation_year INT,
+    bio TEXT,
+    experience JSON,
+    education JSON,
+    certifications JSON,
+    skills JSON,
+    linkedin_url VARCHAR(255),
+    github_url VARCHAR(255),
+    FOREIGN KEY (user_id) REFERENCES users(user_id),
+    FOREIGN KEY (company_id) REFERENCES companies(company_id)
+);
+
+-- Student profiles table
+CREATE TABLE student_profiles (
+    user_id INT PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    phone VARCHAR(20),
+    graduation_year INT,
+    major VARCHAR(100),
+    cgpa DECIMAL(3,2),
+    bio TEXT,
+    skills JSON,
+    certifications JSON,
+    projects JSON,
+    github_url VARCHAR(255),
+    linkedin_url VARCHAR(255),
+    portfolio_url VARCHAR(255),
+    FOREIGN KEY (user_id) REFERENCES users(user_id)
+);
+
+-- Pending alumni table
+CREATE TABLE pending_alumni (
+    pending_id INT AUTO_INCREMENT PRIMARY KEY,
+    email VARCHAR(255) NOT NULL UNIQUE,
+    password_hash VARCHAR(255) NOT NULL,
+    name VARCHAR(255) NOT NULL,
+    phone VARCHAR(20),
+    company_name VARCHAR(255),
+    position VARCHAR(100),
+    graduation_year INT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Alumni requests table
+CREATE TABLE alumni_requests (
+    request_id INT AUTO_INCREMENT PRIMARY KEY,
+    email VARCHAR(255) NOT NULL,
+    name VARCHAR(255) NOT NULL,
+    company_name VARCHAR(255),
+    position VARCHAR(100),
+    graduation_year INT,
+    status ENUM('pending', 'approved', 'rejected') DEFAULT 'pending',
+    submitted_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    processed_at TIMESTAMP NULL,
+    processed_by INT NULL,
+    notes TEXT,
+    FOREIGN KEY (processed_by) REFERENCES users(user_id)
+);
+
+-- Connections table
+CREATE TABLE connections (
+    connection_id INT AUTO_INCREMENT PRIMARY KEY,
+    user_a INT NOT NULL,
+    user_b INT NOT NULL,
+    status ENUM('pending', 'accepted', 'rejected') DEFAULT 'pending',
+    requested_by INT NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (user_a) REFERENCES users(user_id),
+    FOREIGN KEY (user_b) REFERENCES users(user_id),
+    FOREIGN KEY (requested_by) REFERENCES users(user_id)
+);
+
+-- Events table
+CREATE TABLE events (
+    event_id INT AUTO_INCREMENT PRIMARY KEY,
+    created_by INT NOT NULL,
+    title VARCHAR(255) NOT NULL,
+    description TEXT,
+    event_date DATETIME,
+    location VARCHAR(255),
+    event_type ENUM('webinar', 'hackathon', 'placement_drive', 'other'),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (created_by) REFERENCES users(user_id)
+);
+
+-- Event registrations table
+CREATE TABLE event_registrations (
+    registration_id INT AUTO_INCREMENT PRIMARY KEY,
+    event_id INT NOT NULL,
+    user_id INT NOT NULL,
+    status ENUM('registered', 'attended', 'absent') DEFAULT 'registered',
+    registered_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (event_id) REFERENCES events(event_id),
+    FOREIGN KEY (user_id) REFERENCES users(user_id)
+);
+
+-- Opportunities table
+CREATE TABLE opportunities (
+    opportunity_id INT AUTO_INCREMENT PRIMARY KEY,
+    alumni_id INT NOT NULL,
+    company_id INT NOT NULL,
+    title VARCHAR(255) NOT NULL,
+    description TEXT,
+    type ENUM('job', 'internship'),
+    status ENUM('active', 'closed') DEFAULT 'active',
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    FOREIGN KEY (alumni_id) REFERENCES alumni_profiles(user_id),
+    FOREIGN KEY (company_id) REFERENCES companies(company_id)
+);
+
+-- Applications table
+CREATE TABLE applications (
+    application_id INT AUTO_INCREMENT PRIMARY KEY,
+    opportunity_id INT NOT NULL,
+    student_id INT NOT NULL,
+    resume_url VARCHAR(255),
+    status ENUM('pending', 'accepted', 'rejected') DEFAULT 'pending',
+    applied_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (opportunity_id) REFERENCES opportunities(opportunity_id),
+    FOREIGN KEY (student_id) REFERENCES student_profiles(user_id)
+);
+
+-- Mentorships table
+CREATE TABLE mentorships (
+    mentorship_id INT AUTO_INCREMENT PRIMARY KEY,
+    mentor_id INT NOT NULL,
+    mentee_id INT NOT NULL,
+    status ENUM('requested', 'accepted', 'rejected', 'completed') DEFAULT 'requested',
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (mentor_id) REFERENCES alumni_profiles(user_id),
+    FOREIGN KEY (mentee_id) REFERENCES student_profiles(user_id)
+);
+
+-- Messages table
+CREATE TABLE messages (
+    message_id INT AUTO_INCREMENT PRIMARY KEY,
+    sender_id INT NOT NULL,
+    receiver_id INT NOT NULL,
+    message_text TEXT NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    is_read TINYINT(1) DEFAULT 0,
+    read_status TINYINT(1) DEFAULT 0,
+    FOREIGN KEY (sender_id) REFERENCES users(user_id),
+    FOREIGN KEY (receiver_id) REFERENCES users(user_id)
+);
+
+-- Notifications table
+CREATE TABLE notifications (
+    notification_id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT NOT NULL,
+    type ENUM('message', 'connection_request', 'application_update', 'new_opportunity', 'new_application', 'connection_accepted', 'general'),
+    title VARCHAR(255) NOT NULL,
+    message TEXT NOT NULL,
+    related_id INT,
+    is_read TINYINT(1) DEFAULT 0,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (user_id) REFERENCES users(user_id)
+);
+
+-- Resources table
+CREATE TABLE resources (
+    resource_id INT AUTO_INCREMENT PRIMARY KEY,
+    uploaded_by INT NOT NULL,
+    title VARCHAR(255) NOT NULL,
+    description TEXT,
+    file_url VARCHAR(255) NOT NULL,
+    resource_type ENUM('guide', 'resume', 'notes', 'other'),
+    uploaded_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (uploaded_by) REFERENCES users(user_id)
+);
