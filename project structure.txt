@@ -1,101 +1,60 @@
 backend/
-├── config/
-│   └── db.js
-├── node_modules/
+├── config/              # Configuration files
+│   └── db.js           # Database connection
 ├── src/
-│   ├── controllers/
-│   │   ├── admin.controller.js
-│   │   ├── application.controller.js
-│   │   ├── applications.controller.js
+│   ├── controllers/    # Business logic
 │   │   ├── auth.controller.js
-│   │   ├── connection.controller.js
-│   │   ├── message.controller.js
 │   │   ├── opportunity.controller.js
-│   │   ├── profile.controller.js
-│   │   └── user.controller.js
-│   ├── middleware/
+│   │   ├── application.controller.js
+│   │   ├── connection.controller.js
+│   │   └── message.controller.js
+│   ├── middleware/     # Custom middleware
 │   │   └── auth.middleware.js
-│   ├── routes/
-│   │   ├── admin.routes.js
-│   │   ├── application.routes.js
-│   │   ├── applications.routes.js
+│   ├── routes/         # API routes
 │   │   ├── auth.routes.js
-│   │   ├── connection.routes.js
-│   │   ├── message.routes.js
 │   │   ├── opportunity.routes.js
-│   │   ├── profile.routes.js
-│   │   └── user.routes.js
-│   └── utils/
-├── env/
-├── .env.example
-├── .gitignore
-├── app.js
-├── createAdmin.js
-├── package-lock.json
-├── package.json
-├── README.md
-├── server.js
-├── testEmail.js
-└── update_schema.js
-
+│   │   └── admin.routes.js
+│   └── utils/          # Helper functions
+│       ├── email.js
+│       └── validators.js
+├── database/           # Database scripts
+│   ├── schema.sql
+│   └── seed.sql
+├── .env.example        # Environment template
+├── app.js             # Express app configuration
+├── server.js          # Server entry point
+└── package.json
 
 frontend/
-├── node_modules/
-├── public/
-│   └── vite.svg
+├── public/            # Static assets
 ├── src/
-│   ├── assets/
-│   │   └── react.svg
-│   ├── components/
-│   │   ├── Connections/
+│   ├── components/    # Reusable components
+│   │   ├── auth/
+│   │   │   ├── Login.jsx
+│   │   │   └── Register.jsx
+│   │   ├── opportunities/
+│   │   │   ├── OpportunityCard.jsx
+│   │   │   └── CreateOpportunity.jsx
+│   │   ├── connections/
 │   │   │   ├── ConnectionList.jsx
 │   │   │   └── SendRequest.jsx
-│   │   ├── Messages/
-│   │   │   ├── ChatBox.jsx
-│   │   │   └── AcceptedStudentsList.jsx
-│   │   ├── AdminPanel.jsx
-│   │   ├── AlumniLogin.jsx
-│   │   ├── AlumniProfile.jsx
-│   │   ├── AlumniRegister.jsx
-│   │   ├── ApplyOpportunity.jsx
-│   │   ├── CreateOpportunity.jsx
-│   │   ├── EditAlumniProfile.jsx
-│   │   ├── EditOpportunity.jsx
-│   │   ├── EditStudentProfile.jsx
-│   │   ├── Index.jsx
-│   │   ├── MessageNotification.jsx
-│   │   ├── MyApplications.jsx
-│   │   ├── MyOpportunities.jsx
-│   │   ├── Navigation.jsx
-│   │   ├── OpportunitiesList.jsx
-│   │   ├── Profile.jsx
-│   │   ├── StudentDashboard.jsx
-│   │   ├── StudentLogin.jsx
-│   │   ├── StudentProfileView.jsx
-│   │   ├── StudentRegister.jsx
-│   │   ├── UserProfileView.jsx
-│   │   ├── UserSearch.jsx
-│   │   └── ViewApplicants.jsx
-│   ├── pages/
-│   │   ├── ApplyOpportunity.jsx
-│   │   ├── CreateOpportunity.jsx
-│   │   ├── EditOpportunity.jsx
-│   │   ├── Index.jsx
-│   │   ├── Messages.jsx
-│   │   ├── MyOpportunities.jsx
-│   │   ├── OpportunitiesList.jsx
-│   │   ├── Profile.jsx
-│   │   ├── Profiles.jsx
-│   │   ├── StudentLogin.jsx
-│   │   └── StudentRegister.jsx
-│   ├── App.css
-│   ├── App.jsx
-│   ├── index.css
-│   └── main.jsx
-├── .gitignore
-├── eslint.config.js
-├── index.html
-├── package-lock.json
-├── package.json
-├── README.md
-└── vite.config.js
+│   │   └── messages/
+│   │       └── ChatBox.jsx
+│   ├── pages/         # Page components
+│   │   ├── Home.jsx
+│   │   ├── Dashboard.jsx
+│   │   ├── Opportunities.jsx
+│   │   └── Profile.jsx
+│   ├── contexts/      # React contexts
+│   │   └── AuthContext.jsx
+│   ├── hooks/         # Custom hooks
+│   │   ├── useAuth.js
+│   │   └── useOpportunities.js
+│   ├── services/      # API services
+│   │   └── api.js
+│   ├── utils/         # Utilities
+│   │   └── helpers.js
+│   ├── App.jsx        # Main app component
+│   └── main.jsx       # App entry point
+├── .env.example       # Environment template
+└── package.json
