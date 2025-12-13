@@ -2,15 +2,6 @@
 
 A full-stack web platform connecting students and alumni of JNEC, MGM University. Features opportunity posting, applications, networking, and real-time messaging.
 
-## ✨ Live Demo
-
-🔗 **Frontend:** [https://alumni-network.vercel.app](https://alumni-network.vercel.app)  
-🔗 **Backend API:** [https://alumni-api.onrender.com](https://alumni-api.onrender.com)  
-📧 **Demo Credentials:** 
-- Student: student@demo.com / demo123
-- Alumni: alumni@demo.com / demo123
-- Admin: admin@jnec.ac.in / admin123
-
 ## 📋 Table of Contents
 - [Features](#-features)
 - [Tech Stack](#-tech-stack)
