@@ -74,13 +74,6 @@ A full-stack web platform connecting students and alumni of JNEC, MGM University
 - ☁️ **Cloudinary** - Image Storage (if applicable)
 - 🌐 **RESTful API** - Backend Architecture
 
-### **DevOps & Tools**
-- 🐳 **Docker** - Containerization
-- 🔄 **Git** - Version Control
-- 🧪 **Jest** - Testing Framework
-- 📦 **Postman** - API Testing
-- 🌍 **CORS** - Cross-Origin Resource Sharing
-
 ## 🚀 Installation
 
 ### Prerequisites
